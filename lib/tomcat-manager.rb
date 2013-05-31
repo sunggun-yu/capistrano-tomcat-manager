@@ -40,9 +40,8 @@ namespace :tomcat_manager do
     tomcat_manager_path = get_tomcat_manager_path()
     servers.each do |srv|
       _command = "curl --user #{manager_user}:#{manager_pw} --upload-file #{war_file} http://#{srv}:#{port}/#{tomcat_manager_path}/deploy?path=/#{context_name}&update=true"
-      puts "#{_command}"
-      #result = %x[#{_command}]
-      #puts "deploy : #{s} : #{result}"
+      result = %x[#{_command}]
+      puts "deploy : #{s} : #{result}"
     end
   end
 
@@ -77,9 +76,8 @@ def call_tomcat_manager(host_name, manager_function, path)
   end
   tomcat_manager_path = get_tomcat_manager_path()
   _command = "curl --user #{manager_user}:#{manager_pw} http://#{host_name}:#{port}/#{tomcat_manager_path}/#{manager_function}#{_path}"
-  puts "#{_command}"
-  #result = %x[#{_command}]
-  #puts "#{manager_function} : #{host_name} : #{result}"
+  result = %x[#{_command}]
+  puts "#{manager_function} : #{host_name} : #{result}"
 end
 
 def call_tomcat_manager_for_app(host_name, manager_function)
