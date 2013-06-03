@@ -1,0 +1,9 @@
+require 'tomcat-manager'
+
+role :hosts, "host1", "host2"
+set :port, "8080"
+set :context_name, "app"
+set :manager_user, "admin"
+set :manager_pw, "password"
+set :war_file, "/tmp/abc.war"
+set :tomcat_version, 7
